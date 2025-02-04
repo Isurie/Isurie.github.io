@@ -1445,34 +1445,28 @@ section.lazy-placeholder:after {
 .cid-sn1q1uafoh .mbr-section-title {
   color: #ffffff;
 }
-.cid-uBIRCDmN43 {
-  padding-top: 90px;
-  padding-bottom: 90px;
+.cid-uBOqw32Iu3 {
+  padding-top: 30px;
+  padding-bottom: 30px;
   background-color: #ffffff;
   overflow: hidden;
   box-sizing: border-box;
 }
-.cid-uBIRCDmN43 .mbr-slider .carousel-control {
+.cid-uBOqw32Iu3 .mbr-slider .carousel-control {
   background: #1b1b1b;
 }
-.cid-uBIRCDmN43 .mbr-slider .carousel-control-prev {
+.cid-uBOqw32Iu3 .mbr-slider .carousel-control-prev {
   left: 0;
   margin-left: 2.5rem;
 }
-.cid-uBIRCDmN43 .mbr-slider .carousel-control-next {
+.cid-uBOqw32Iu3 .mbr-slider .carousel-control-next {
   right: 0;
   margin-right: 2.5rem;
 }
-.cid-uBIRCDmN43 .mbr-slider .modal-body .close {
+.cid-uBOqw32Iu3 .mbr-slider .modal-body .close {
   background: #1b1b1b;
 }
-.cid-uBIRCDmN43 .row > .row {
-  display: block;
-}
-.cid-uBIRCDmN43 .mbr-gallery-item {
-  width: 100%;
-}
-.cid-uBIRCDmN43 .mbr-gallery-item > div::before {
+.cid-uBOqw32Iu3 .mbr-gallery-item > div::before {
   content: '';
   position: absolute;
   left: 0;
@@ -1485,16 +1479,13 @@ section.lazy-placeholder:after {
   transition: 0.2s opacity ease-in-out;
   background: linear-gradient(to left, #554346, #45505b) !important;
 }
-.cid-uBIRCDmN43 .mbr-gallery-item > div {
-  position: relative;
-}
-.cid-uBIRCDmN43 .mbr-gallery-item > div:hover .mbr-gallery-title::before {
+.cid-uBOqw32Iu3 .mbr-gallery-item > div:hover .mbr-gallery-title::before {
   background: transparent !important;
 }
-.cid-uBIRCDmN43 .mbr-gallery-item > div:hover:before {
-  opacity: 0.5 !important;
+.cid-uBOqw32Iu3 .mbr-gallery-item > div:hover:before {
+  opacity: 0.6 !important;
 }
-.cid-uBIRCDmN43 .mbr-gallery-title {
+.cid-uBOqw32Iu3 .mbr-gallery-title {
   font-size: .9em;
   position: absolute;
   display: block;
@@ -1504,7 +1495,7 @@ section.lazy-placeholder:after {
   color: #fff;
   z-index: 2;
 }
-.cid-uBIRCDmN43 .mbr-gallery-title:before {
+.cid-uBOqw32Iu3 .mbr-gallery-title:before {
   content: " ";
   width: 100%;
   height: 100%;
@@ -1513,7 +1504,7 @@ section.lazy-placeholder:after {
   z-index: -1;
   position: absolute;
   background: #554346 !important;
-  opacity: 0.5;
+  opacity: 0.6;
   -webkit-transition: 0.2s background ease-in-out;
   transition: 0.2s background ease-in-out;
   background: linear-gradient(to left, #554346, #45505b) !important;
