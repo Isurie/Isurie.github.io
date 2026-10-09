@@ -1,676 +1,1029 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta name="description"
-    content="Sinhalese Language Based Hate Speech Detection and Intent Analysis on Tweets — research project by Isurie K. Liyanage.">
-
-  <meta name="theme-color" content="#f8f9fc">
-
-  <title>Sinhalese Hate Speech Detection | Isurie</title>
-
-  <link rel="icon" href="assets/images/log22o-60x60.png">
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="Research project: Sinhalese Language Based Hate Speech Detection and Intent Analysis on Tweets by Isurie K. Liyanage.">
+  <meta property="og:title" content="Sinhalese Hate Speech Detection | Isurie K. Liyanage">
+  <meta property="og:image" content="assets/images/page1-meta.png">
+  <link rel="shortcut icon" href="assets/images/log22o-60x60.png" type="image/x-icon">
+  <title>Research Project | Isurie K. Liyanage</title>
 
   <style>
-    /* Research gallery */
-    .research-gallery-section {
-      overflow: hidden;
+    :root {
+      --ink: #172033;
+      --muted: #657187;
+      --paper: #ffffff;
+      --surface: #f5f7fb;
+      --line: #e2e7f0;
+      --navy: #101827;
+      --blue: #789bff;
+      --radius: 18px;
+      --max: 1160px;
     }
 
-    .gallery-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 24px;
-      margin: 24px 0 32px;
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
     }
 
-    .gallery-heading h2 {
-      margin-bottom: 12px;
-    }
-
-    .gallery-intro {
-      max-width: 660px;
-      color: var(--muted, #687386);
-      line-height: 1.8;
-    }
-
-    .gallery-count {
-      flex-shrink: 0;
-      color: var(--muted, #687386);
-      font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .gallery-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 28px;
-    }
-
-    .gallery-filter {
-      padding: 10px 16px;
-      border: 1px solid #dce2ea;
-      border-radius: 999px;
-      background: transparent;
-      color: inherit;
-      font: inherit;
-      font-size: 13px;
-      cursor: pointer;
-      transition: background .2s ease, color .2s ease;
-    }
-
-    .gallery-filter:hover,
-    .gallery-filter.active {
-      background: #172b4d;
-      border-color: #172b4d;
-      color: #fff;
-    }
-
-    .research-gallery {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 28px;
-    }
-
-    .research-shot {
-      min-width: 0;
+    body {
       margin: 0;
-      overflow: hidden;
-      border: 1px solid #e4e8ef;
-      border-radius: 16px;
-      background: var(--card, #fff);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-
-    .research-shot[hidden] {
-      display: none;
-    }
-
-    .research-shot:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 38px rgba(20, 35, 60, .09);
-    }
-
-    .shot-open {
-      display: block;
-      position: relative;
-      width: 100%;
-      padding: 0;
-      overflow: hidden;
-      border: 0;
-      background: #f1f4f8;
-      cursor: zoom-in;
-    }
-
-    .shot-open img {
-      display: block;
-      width: 100%;
-      height: 280px;
-      object-fit: contain;
-      transition: transform .3s ease;
-    }
-
-    .shot-open:hover img {
-      transform: scale(1.025);
-    }
-
-    .shot-zoom {
-      position: absolute;
-      right: 14px;
-      bottom: 14px;
-      display: grid;
-      place-items: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: #fff;
-      color: #172b4d;
-      font-size: 20px;
-      box-shadow: 0 3px 12px rgba(0, 0, 0, .12);
-    }
-
-    .research-shot figcaption {
-      padding: 22px 24px 24px;
-    }
-
-    .shot-number {
-      color: #667b9b;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .13em;
-    }
-
-    .research-shot h3 {
-      margin: 10px 0 8px;
-      font-size: 19px;
-    }
-
-    .research-shot figcaption p {
-      margin: 0;
-      color: var(--muted, #687386);
-      font-size: 14px;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
       line-height: 1.7;
     }
 
-    .gallery-footer {
+    a { color: inherit; }
+
+    button { font: inherit; }
+
+    img { max-width: 100%; }
+
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      color: #fff;
+      background: rgba(16, 24, 39, .96);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .brand-dot { color: var(--blue); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: #d7deea;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        radial-gradient(ellipse at 85% 20%, #293e63 0, transparent 40%),
+        linear-gradient(135deg, #101827, #182b48 65%, #233f65);
+      padding: 100px 0 94px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -100px;
+      bottom: -220px;
+      width: 520px;
+      height: 520px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50%;
+      box-shadow: 0 0 0 65px rgba(255,255,255,.025),
+                  0 0 0 130px rgba(255,255,255,.02);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 880px;
+    }
+
+    .eyebrow, .section-kicker {
+      margin: 0 0 18px;
+      color: #88a8ff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      margin: 0;
+      font-size: clamp(34px, 5.5vw, 64px);
+      line-height: 1.12;
+      letter-spacing: -.045em;
+    }
+
+    .hero-description {
+      max-width: 740px;
+      margin: 25px 0 28px;
+      color: #d0d8e7;
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 26px;
+    }
+
+    .tag {
+      padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      color: #e5ebf6;
+      font-size: 12px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      background: #fff;
+      color: #172033;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .2s, background .2s;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button-primary {
+      background: #789bff;
+      color: #101827;
+    }
+
+    .button-outline {
+      border-color: rgba(255,255,255,.3);
+      background: transparent;
+      color: #fff;
+    }
+
+    .section { padding: 88px 0; }
+
+    .section-light { background: var(--surface); }
+
+    .section-heading {
+      max-width: 740px;
+      margin-bottom: 38px;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 16px;
+      font-size: clamp(29px, 4vw, 43px);
+      line-height: 1.2;
+      letter-spacing: -.035em;
+    }
+
+    .section-heading > p:last-child {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(250px, .8fr);
+      gap: 50px;
+      align-items: start;
+    }
+
+    .overview-copy p { color: var(--muted); }
+
+    .overview-copy h3 {
+      margin-top: 30px;
+      font-size: 19px;
+    }
+
+    .fact-panel {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .fact {
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .fact:first-child { padding-top: 0; }
+    .fact:last-child { padding-bottom: 0; border: 0; }
+
+    .fact span {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .fact strong { font-size: 14px; }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .module-card {
+      padding: 27px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .module-number {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #5277da;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    .module-card h3 {
+      margin: 0 0 12px;
+      font-size: 19px;
+      line-height: 1.4;
+    }
+
+    .module-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .module-banner {
+      padding: 38px;
+      border-radius: var(--radius);
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .module-banner h3 {
+      margin: 0 0 12px;
+      font-size: clamp(25px, 3vw, 35px);
+      line-height: 1.25;
+    }
+
+    .module-banner p {
+      max-width: 790px;
+      margin-bottom: 0;
+      color: #d1d9e8;
+    }
+
+    .feature-images {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 26px;
+    }
+
+    .feature-image {
+      margin: 0;
+      padding: 12px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .feature-image button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: #edf1f7;
+      cursor: zoom-in;
+    }
+
+    .feature-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+    }
+
+    .feature-image figcaption {
+      padding: 14px 5px 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .gallery-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 25px;
+      margin-bottom: 28px;
+    }
+
+    .gallery-top .section-heading { margin-bottom: 0; }
+
+    .gallery-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+
+    .filter-button {
+      padding: 9px 15px;
+      border: 1px solid #dce2ed;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .filter-button:hover,
+    .filter-button.active {
+      border-color: var(--navy);
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-card {
+      min-width: 0;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(20,35,60,.08);
+    }
+
+    .gallery-card[hidden] { display: none; }
+
+    .gallery-image-button {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: #e9edf4;
+      cursor: zoom-in;
+    }
+
+    .gallery-image-button img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+    }
+
+    .zoom-label {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      display: grid;
+      width: 31px;
+      height: 31px;
+      place-items: center;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--ink);
+      box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    }
+
+    .gallery-caption { padding: 15px 16px 17px; }
+
+    .gallery-caption span {
+      display: block;
+      margin-bottom: 5px;
+      color: #6079b5;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .gallery-caption h3 {
+      overflow-wrap: anywhere;
+      margin: 0;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .gallery-note {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .repository-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 42px;
+      padding: 27px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .repository-cta h3 {
+      margin: 0 0 5px;
+      font-size: 17px;
+    }
+
+    .repository-cta p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .button-dark {
+      flex-shrink: 0;
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .site-footer {
+      padding: 30px 0;
+      background: var(--navy);
+      color: #c8d1e0;
+    }
+
+    .footer-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      margin-top: 36px;
-      padding-top: 24px;
-      border-top: 1px solid #e4e8ef;
+      font-size: 12px;
     }
 
-    .gallery-footer p {
-      color: var(--muted, #687386);
-      font-size: 14px;
-    }
+    .footer-inner a { color: #fff; }
 
-    .research-lightbox {
-      width: min(1000px, calc(100% - 32px));
+    .lightbox {
+      width: min(1200px, calc(100% - 28px));
       max-width: none;
-      max-height: 92vh;
-      padding: 16px;
-      border: 0;
-      border-radius: 16px;
-      background: #fff;
-      color: #172033;
+      max-height: 94vh;
+      padding: 15px;
+      border: 1px solid #354155;
+      border-radius: 15px;
+      background: #101827;
+      color: #fff;
     }
 
-    .research-lightbox::backdrop {
-      background: rgba(9, 17, 32, .86);
+    .lightbox::backdrop {
+      background: rgba(5,10,20,.91);
       backdrop-filter: blur(5px);
     }
 
-    .lightbox-toolbar {
+    .lightbox-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      margin-bottom: 14px;
+      padding-bottom: 13px;
     }
 
-    .lightbox-toolbar p {
+    .lightbox-header p {
+      overflow-wrap: anywhere;
       margin: 0;
-      font-weight: 600;
+      font-size: 13px;
     }
 
-    #lightbox-close {
-      width: 40px;
-      height: 40px;
-      border: 0;
+    .lightbox-close {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border: 1px solid #46516a;
       border-radius: 50%;
-      background: #eef1f6;
+      background: #202c40;
+      color: #fff;
       cursor: pointer;
-      font-size: 18px;
     }
 
-    #lightbox-image {
+    .lightbox img {
       display: block;
       width: 100%;
-      max-height: calc(92vh - 100px);
+      max-height: calc(94vh - 100px);
       object-fit: contain;
     }
 
-    .gallery-empty {
-      grid-column: 1 / -1;
-      padding: 28px;
-      border: 1px dashed #dce2ea;
-      border-radius: 12px;
-      color: #687386;
-      text-align: center;
+    @media (max-width: 850px) {
+      .overview-grid { grid-template-columns: 1fr; gap: 25px; }
+      .module-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav-links { gap: 13px; }
     }
 
-    @media (max-width: 700px) {
-      .gallery-heading,
-      .gallery-footer {
+    @media (max-width: 600px) {
+      .container { width: calc(100% - 32px); }
+      .nav { min-height: 66px; }
+      .brand img { width: 34px; height: 34px; }
+      .brand { font-size: 12px; }
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: 11px; }
+      .nav-links a:nth-child(2) { display: none; }
+      .hero { padding: 72px 0; }
+      .hero-description { font-size: 15px; }
+      .section { padding: 62px 0; }
+      .module-grid, .gallery-grid, .feature-images { grid-template-columns: 1fr; }
+      .module-banner { padding: 25px; }
+      .gallery-top, .repository-cta, .footer-inner {
         align-items: flex-start;
         flex-direction: column;
       }
-
-      .research-gallery {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .shot-open img {
-        height: 230px;
-      }
-
-      .research-shot figcaption {
-        padding: 18px;
-      }
-
-      .gallery-filters {
-        gap: 8px;
-      }
+      .gallery-caption h3 { font-size: 14px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .research-shot,
-      .shot-open img,
-      .gallery-filter {
-        transition: none;
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
       }
     }
   </style>
 </head>
 
 <body>
-
-  <header class="site-header solid">
-    <nav class="nav container" aria-label="Main navigation">
-      <a class="brand" href="index.html">
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Back to Isurie's portfolio">
         <img src="assets/images/log22o-60x60.png" alt="">
-        <span>ISURIE<span class="accent">.</span></span>
+        <span>ISURIE K. LIYANAGE<span class="brand-dot">.</span></span>
       </a>
 
       <div class="nav-links">
-        <a href="index.html#about">About</a>
-        <a href="index.html#experience">Experience</a>
-        <a href="index.html#projects">Projects</a>
-        <a href="index.html#research">Research</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="index.html">Home</a>
+        <a href="#overview">Research</a>
+        <a href="#modules">Modules</a>
+        <a href="#gallery">Screenshots</a>
       </div>
     </nav>
   </header>
 
   <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <p class="eyebrow">ACADEMIC RESEARCH · B.SC. LEVEL 4</p>
 
-    <!-- Project introduction -->
-    <section class="project-hero">
-      <div class="container narrow">
-        <p class="eyebrow">RESEARCH PROJECT · 2020 — 2021</p>
+        <h1>Sinhalese Language Based Hate Speech Detection and Intent Analysis on Tweets</h1>
 
-        <h1>
-          Sinhalese Language Based Hate Speech Detection and Intent Analysis on Tweets
-        </h1>
-
-        <p class="hero-lead">
-          A B.Sc. Level 4 research project exploring detection of
-          Sinhalese-language hate speech and analysis of tweet intent
-          using semantic analysis and data-mining techniques.
+        <p class="hero-description">
+          Research into detecting Sinhalese-language hate speech and
+          analysing tweet intent using semantic analysis, text
+          preprocessing and data-mining techniques.
         </p>
 
-        <div class="tags">
-          <span>Python</span>
-          <span>NLTK</span>
-          <span>Pandas</span>
-          <span>NumPy</span>
-          <span>Scikit-learn</span>
-          <span>PyCharm</span>
+        <div class="tags" aria-label="Technologies">
+          <span class="tag">Python</span>
+          <span class="tag">NLTK</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Scikit-learn</span>
+          <span class="tag">PyCharm</span>
+        </div>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#gallery">Explore screenshots ↓</a>
+          <a class="button button-outline" href="index.html">← Back to portfolio</a>
         </div>
       </div>
     </section>
 
-    <!-- Research overview -->
-    <section class="section">
-      <div class="container project-layout">
-        <article>
-          <p class="section-kicker">01 / OVERVIEW</p>
-
-          <h2>From text preprocessing to intent analysis.</h2>
-
+    <section class="section" id="overview">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">01 / RESEARCH OVERVIEW</p>
+          <h2>Turning Sinhala text into meaningful insights.</h2>
           <p>
-            The project focused on developing a tool to detect
-            Sinhalese language-based hate speech and analyse the
-            intention of tweets.
+            The research explored the development of a tool for
+            detecting Sinhalese-language hate speech and analysing
+            the intention of tweets.
           </p>
+        </div>
 
-          <p>
-            The work used semantic analysis and data-mining techniques
-            to address the problem.
-          </p>
+        <div class="overview-grid">
+          <article class="overview-copy">
+            <h3>Research focus</h3>
+            <p>
+              Semantic analysis and data-mining techniques were used
+              to address the challenge of understanding and
+              classifying Sinhala-language social media content.
+            </p>
 
-          <h3>My contribution</h3>
+            <h3>My contribution</h3>
+            <p>
+              My contribution included implementing a text
+              preprocessing module whose outputs were used as inputs
+              for analysis. I also worked on classifying Sinhala
+              texts found on Twitter into primary domains and
+              subjective categories.
+            </p>
 
-          <p>
-            My contribution included implementing a text preprocessing
-            module whose outcomes were used as inputs for analysis,
-            classifying Sinhala texts found on Twitter into primary
-            domains, and further classifying Sinhala texts into
-            subjective categories.
-          </p>
-        </article>
+            <h3>Research objective</h3>
+            <p>
+              The classification process aimed to support further
+              analysis of hate according to domain and subject
+              classes, helping define the severity level of tweet
+              content.
+            </p>
+          </article>
 
-        <aside class="project-sidebar">
-          <div>
-            <span>PROJECT</span>
-            <strong>Group research project</strong>
-          </div>
-
-          <div>
-            <span>LEVEL</span>
-            <strong>B.Sc. Level 4</strong>
-          </div>
-
-          <div>
-            <span>PERIOD</span>
-            <strong>2020–2021</strong>
-          </div>
-
-          <div>
-            <span>FOCUS</span>
-            <strong>NLP · Classification</strong>
-          </div>
-        </aside>
+          <aside class="fact-panel" aria-label="Project details">
+            <div class="fact">
+              <span>Project</span>
+              <strong>Level 4 research project</strong>
+            </div>
+            <div class="fact">
+              <span>Research area</span>
+              <strong>Natural Language Processing</strong>
+            </div>
+            <div class="fact">
+              <span>Language</span>
+              <strong>Sinhala</strong>
+            </div>
+            <div class="fact">
+              <span>Techniques</span>
+              <strong>Semantic analysis and data mining</strong>
+            </div>
+            <div class="fact">
+              <span>Tools</span>
+              <strong>Python, NLTK, Pandas, NumPy, Scikit-learn</strong>
+            </div>
+          </aside>
+        </div>
       </div>
     </section>
 
-    <!-- Research modules -->
-    <section class="section section-light">
+    <section class="section section-light" id="modules">
       <div class="container">
-        <p class="section-kicker">02 / MODULES</p>
+        <div class="section-heading">
+          <p class="section-kicker">02 / RESEARCH MODULES</p>
+          <h2>Breaking down the classification workflow.</h2>
+          <p>
+            The original project describes multiple stages for
+            processing and classifying Sinhala Twitter text.
+          </p>
+        </div>
 
         <div class="module-grid">
-          <div class="module">
-            <b>01</b>
+          <article class="module-card">
+            <span class="module-number">MODULE 01</span>
             <h3>Twitter text analysis</h3>
             <p>
-              Extracting and preprocessing Sinhala Twitter text
-              for downstream analysis.
+              Working with Twitter text as the source material
+              for the research.
             </p>
-          </div>
+          </article>
 
-          <div class="module">
-            <b>02</b>
-            <h3>Context classification</h3>
+          <article class="module-card">
+            <span class="module-number">MODULE 02</span>
+            <h3>Text preprocessing and classification</h3>
             <p>
-              Classifying tweet content across domains such as
-              religion, racist, political, sports and sexism,
-              plus other content.
+              Preparing Sinhala text and categorising tweet
+              content by domain and subject.
             </p>
-          </div>
+          </article>
 
-          <div class="module">
-            <b>03</b>
-            <h3>Subject classification</h3>
+          <article class="module-card">
+            <span class="module-number">MODULE 03</span>
+            <h3>Hate detection and intent analysis</h3>
             <p>
-              Classifying Sinhala texts into opinion, news
-              and emotion categories.
+              Applying classification outputs to further analysis
+              of hate and the intent of tweet content.
             </p>
-          </div>
-
-          <div class="module">
-            <b>04</b>
-            <h3>Hate &amp; intent analysis</h3>
-            <p>
-              Using classified domain and subject information
-              to support further analysis of hate and intent.
-            </p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Screenshot gallery -->
-    <section class="section research-gallery-section"
-      id="project-material">
-
+    <section class="section" id="text-classification">
       <div class="container">
-        <p class="section-kicker">03 / PROJECT MATERIAL</p>
+        <div class="module-banner">
+          <p class="eyebrow">DETAILED CONTRIBUTION</p>
+          <h3>Text Classification Module</h3>
+          <p>
+            Researched Sinhalese Language Based Short Text
+            Classification to Improve Information Filtering.
+            The module covered extracting Sinhala Twitter texts,
+            preprocessing them, and categorising tweet content
+            according to subject and domain.
+          </p>
+        </div>
 
-        <div class="gallery-heading">
-          <div>
-            <h2>Inside the research</h2>
+        <div class="feature-images">
+          <figure class="feature-image">
+            <button type="button" class="image-open"
+              data-image="assets/images/screenshot-311-1920x1080.png"
+              data-caption="Original project material — screenshot 311">
+              <img src="assets/images/screenshot-311-1920x1080.png"
+                alt="Original research project screenshot 311"
+                loading="lazy">
+            </button>
+            <figcaption>Original project material · 01</figcaption>
+          </figure>
 
-            <p class="gallery-intro">
-              Explore the visual material from the original project.
-              Screenshots are organised into research topics so
-              visitors can follow the workflow more easily.
+          <figure class="feature-image">
+            <button type="button" class="image-open"
+              data-image="assets/images/screenshot-312-1920x1080.png"
+              data-caption="Original project material — screenshot 312">
+              <img src="assets/images/screenshot-312-1920x1080.png"
+                alt="Original research project screenshot 312"
+                loading="lazy">
+            </button>
+            <figcaption>Original project material · 02</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="gallery">
+      <div class="container">
+        <div class="gallery-top">
+          <div class="section-heading">
+            <p class="section-kicker">03 / PROJECT ARCHIVE</p>
+            <h2>The research, in screenshots.</h2>
+            <p>
+              Browse the original presentation and implementation
+              screenshots. Select any image to view it at a larger size.
             </p>
           </div>
-
-          <span class="gallery-count">
-            Original project archive
-          </span>
         </div>
 
-        <div class="gallery-filters"
-          aria-label="Filter research screenshots">
-
-          <button class="gallery-filter active"
-            type="button" data-filter="all" aria-pressed="true">
-            All material
-          </button>
-
-          <button class="gallery-filter"
-            type="button" data-filter="preprocessing" aria-pressed="false">
-            Text processing
-          </button>
-
-          <button class="gallery-filter"
-            type="button" data-filter="classification" aria-pressed="false">
-            Classification
-          </button>
-
-          <button class="gallery-filter"
-            type="button" data-filter="analysis" aria-pressed="false">
-            Analysis
-          </button>
+        <div class="gallery-tools" aria-label="Filter screenshots">
+          <button class="filter-button active" type="button"
+            data-filter="all" aria-pressed="true">All screenshots</button>
+          <button class="filter-button" type="button"
+            data-filter="overview" aria-pressed="false">Project overview</button>
+          <button class="filter-button" type="button"
+            data-filter="walkthrough" aria-pressed="false">Module walkthrough</button>
         </div>
 
-        <div class="research-gallery">
-
-          <!--
-            IMPORTANT:
-            Replace these example filenames with the REAL filenames
-            from assets/images/. Use the same path for src and data-full.
-            Duplicate a figure block to include more screenshots.
-          -->
-
-          <figure class="research-shot"
-            data-category="preprocessing">
-
-            <button class="shot-open" type="button"
-              data-full="assets/images/REPLACE-WITH-SCREENSHOT-1.png"
-              data-caption="Text preprocessing module"
-              aria-label="Enlarge text preprocessing screenshot">
-
-              <img
-                src="assets/images/REPLACE-WITH-SCREENSHOT-1.png"
-                alt="Text preprocessing module from the research project"
-                loading="lazy">
-
-              <span class="shot-zoom" aria-hidden="true">↗</span>
-            </button>
-
-            <figcaption>
-              <span class="shot-number">01 / PREPROCESSING</span>
-              <h3>Text preprocessing</h3>
-              <p>
-                Preparing Sinhala text for subsequent analysis.
-              </p>
-            </figcaption>
-          </figure>
-
-          <figure class="research-shot"
-            data-category="classification">
-
-            <button class="shot-open" type="button"
-              data-full="assets/images/REPLACE-WITH-SCREENSHOT-2.png"
-              data-caption="Domain classification"
-              aria-label="Enlarge domain classification screenshot">
-
-              <img
-                src="assets/images/REPLACE-WITH-SCREENSHOT-2.png"
-                alt="Domain classification research screenshot"
-                loading="lazy">
-
-              <span class="shot-zoom" aria-hidden="true">↗</span>
-            </button>
-
-            <figcaption>
-              <span class="shot-number">02 / CLASSIFICATION</span>
-              <h3>Domain classification</h3>
-              <p>
-                Organising Sinhala text into relevant subject domains.
-              </p>
-            </figcaption>
-          </figure>
-
-          <figure class="research-shot"
-            data-category="classification">
-
-            <button class="shot-open" type="button"
-              data-full="assets/images/REPLACE-WITH-SCREENSHOT-3.png"
-              data-caption="Subject classification"
-              aria-label="Enlarge subject classification screenshot">
-
-              <img
-                src="assets/images/REPLACE-WITH-SCREENSHOT-3.png"
-                alt="Subject classification research screenshot"
-                loading="lazy">
-
-              <span class="shot-zoom" aria-hidden="true">↗</span>
-            </button>
-
-            <figcaption>
-              <span class="shot-number">03 / CLASSIFICATION</span>
-              <h3>Subject classification</h3>
-              <p>
-                Exploring opinion, news and emotion categories.
-              </p>
-            </figcaption>
-          </figure>
-
-          <figure class="research-shot"
-            data-category="analysis">
-
-            <button class="shot-open" type="button"
-              data-full="assets/images/REPLACE-WITH-SCREENSHOT-4.png"
-              data-caption="Hate speech and intent analysis"
-              aria-label="Enlarge analysis screenshot">
-
-              <img
-                src="assets/images/REPLACE-WITH-SCREENSHOT-4.png"
-                alt="Hate speech and intent analysis research screenshot"
-                loading="lazy">
-
-              <span class="shot-zoom" aria-hidden="true">↗</span>
-            </button>
-
-            <figcaption>
-              <span class="shot-number">04 / ANALYSIS</span>
-              <h3>Hate &amp; intent analysis</h3>
-              <p>
-                Exploring the role of classification in further analysis.
-              </p>
-            </figcaption>
-          </figure>
-
+        <div class="gallery-grid" id="gallery-grid">
+          <!-- Original screenshots are loaded from the supplied paths. -->
         </div>
 
-        <div class="gallery-footer">
-          <p>
-            Original project material, presented in a clearer format.
-          </p>
+        <p class="gallery-note">
+          The original image files remain in assets/images/.
+          Screenshot captions identify the source filename and do not
+          assume details that have not been verified from the image.
+        </p>
 
-          <a class="btn btn-primary"
-            href="https://github.com/Isurie/Text-Classification-Module"
+        <div class="repository-cta">
+          <div>
+            <h3>Explore the research further</h3>
+            <p>Return to the portfolio or explore the original GitHub account.</p>
+          </div>
+          <a class="button button-dark"
+            href="https://github.com/Isurie"
             target="_blank" rel="noopener noreferrer">
-            Explore project repository ↗
+            Visit GitHub ↗
           </a>
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- Footer -->
-  <footer>
+  <footer class="site-footer">
     <div class="container footer-inner">
       <span>© 2026 Isurie K. Liyanage</span>
-      <a href="index.html">← Back to portfolio</a>
+      <a href="index.html">Return to main portfolio ↑</a>
     </div>
   </footer>
 
-  <!-- Full-size screenshot viewer -->
-  <dialog class="research-lightbox"
-    id="research-lightbox" aria-label="Screenshot viewer">
-
-    <div class="lightbox-toolbar">
+  <dialog class="lightbox" id="lightbox" aria-label="Screenshot viewer">
+    <div class="lightbox-header">
       <p id="lightbox-caption">Research screenshot</p>
-
-      <button type="button" id="lightbox-close"
-        aria-label="Close image viewer">
-        ✕
-      </button>
+      <button type="button" class="lightbox-close"
+        id="lightbox-close" aria-label="Close image viewer">✕</button>
     </div>
-
     <img id="lightbox-image" src="" alt="">
   </dialog>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const filters = document.querySelectorAll(".gallery-filter");
-      const shots = document.querySelectorAll(".research-shot");
-      const viewer = document.getElementById("research-lightbox");
-      const viewerImage = document.getElementById("lightbox-image");
-      const viewerCaption = document.getElementById("lightbox-caption");
-      const closeButton = document.getElementById("lightbox-close");
+    /*
+      Every filename below comes from the original HTML supplied
+      for this page. No image files need to be renamed.
+    */
+    const overviewImages = [
+      "screenshot-311-1920x1080.png",
+      "screenshot-312-1920x1080.png"
+    ];
 
-      // Gallery category filtering.
-      filters.forEach(function (filter) {
-        filter.addEventListener("click", function () {
-          const category = filter.dataset.filter;
+    const walkthroughImages = [
+      "screenshot-279-1920x1080.png",
+      "screenshot-280-1920x1080.png",
+      "screenshot-282-1920x1080.png",
+      "screenshot-283-1920x1080.png",
+      "screenshot-284-1920x1080.png",
+      "screenshot-285-1920x1080.png",
+      "screenshot-286-1920x1080.png",
+      "screenshot-287-1920x1080.png",
+      "screenshot-288-1920x1080.png",
+      "screenshot-289-1920x1080.png",
+      "screenshot-290-1920x1080.png",
+      "screenshot-291-1920x1080.png",
+      "screenshot-292-1920x1080.png",
+      "screenshot-293-1920x1080.png",
+      "screenshot-294-1920x1080.png",
+      "screenshot-295-1920x1080.png",
+      "screenshot-296-1920x1080.png",
+      "screenshot-297-1920x1080.png",
+      "screenshot-298-1920x1080.png",
+      "screenshot-299-1920x1080.png",
+      "screenshot-300-1920x1080.png",
+      "screenshot-301-1920x1080.png",
+      "screenshot-302-1920x1080.png",
+      "screenshot-303-1920x1080.png",
+      "screenshot-304-1920x1080.png",
+      "screenshot-305-1920x1080.png",
+      "screenshot-306-1920x1080.png",
+      "screenshot-307-1920x1080.png",
+      "screenshot-308-1920x1080.png",
+      "screenshot-309-1920x1080.png",
+      "screenshot-310-1920x1080.png"
+    ];
 
-          filters.forEach(function (item) {
-            const active = item === filter;
-            item.classList.toggle("active", active);
-            item.setAttribute("aria-pressed", String(active));
-          });
+    const gallery = document.getElementById("gallery-grid");
 
-          shots.forEach(function (shot) {
-            shot.hidden =
-              category !== "all" &&
-              shot.dataset.category !== category;
-          });
+    function createScreenshotCard(filename, index, category) {
+      const path = "assets/images/" + filename;
+      const card = document.createElement("figure");
+      card.className = "gallery-card";
+      card.dataset.category = category;
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "gallery-image-button image-open";
+      button.dataset.image = path;
+      button.dataset.caption = filename;
+      button.setAttribute("aria-label", "Enlarge " + filename);
+
+      const image = document.createElement("img");
+      image.src = path;
+      image.alt = "Research project screenshot: " + filename;
+      image.loading = "lazy";
+      image.decoding = "async";
+
+      image.addEventListener("error", function () {
+        card.hidden = true;
+        console.warn("Could not load image:", path);
+      });
+
+      const zoom = document.createElement("span");
+      zoom.className = "zoom-label";
+      zoom.setAttribute("aria-hidden", "true");
+      zoom.textContent = "↗";
+
+      button.append(image, zoom);
+
+      const caption = document.createElement("figcaption");
+      caption.className = "gallery-caption";
+
+      const categoryLabel = document.createElement("span");
+      categoryLabel.textContent =
+        category === "overview" ? "Project material" : "Module walkthrough";
+
+      const title = document.createElement("h3");
+      title.textContent =
+        String(index).padStart(2, "0") + " · " + filename;
+
+      caption.append(categoryLabel, title);
+      card.append(button, caption);
+      return card;
+    }
+
+    let number = 1;
+
+    overviewImages.forEach(function (filename) {
+      gallery.appendChild(
+        createScreenshotCard(filename, number++, "overview")
+      );
+    });
+
+    walkthroughImages.forEach(function (filename) {
+      gallery.appendChild(
+        createScreenshotCard(filename, number++, "walkthrough")
+      );
+    });
+
+    // Filter the gallery.
+    document.querySelectorAll(".filter-button").forEach(function (button) {
+      button.addEventListener("click", function () {
+        const filter = button.dataset.filter;
+
+        document.querySelectorAll(".filter-button").forEach(function (item) {
+          const active = item === button;
+          item.classList.toggle("active", active);
+          item.setAttribute("aria-pressed", String(active));
         });
-      });
 
-      // Open screenshots in the larger image viewer.
-      document.querySelectorAll(".shot-open").forEach(function (button) {
-        button.addEventListener("click", function () {
-          const image = button.querySelector("img");
-          const fullImage = button.dataset.full;
-
-          viewerImage.src = fullImage;
-          viewerImage.alt = image.alt;
-          viewerCaption.textContent = button.dataset.caption;
-
-          if (typeof viewer.showModal === "function") {
-            viewer.showModal();
-          } else {
-            window.open(fullImage, "_blank", "noopener");
-          }
+        document.querySelectorAll(".gallery-card").forEach(function (card) {
+          card.hidden =
+            filter !== "all" && card.dataset.category !== filter;
         });
-      });
-
-      // Close the viewer.
-      closeButton.addEventListener("click", function () {
-        viewer.close();
-      });
-
-      viewer.addEventListener("click", function (event) {
-        if (event.target === viewer) {
-          viewer.close();
-        }
-      });
-
-      viewer.addEventListener("close", function () {
-        viewerImage.removeAttribute("src");
       });
     });
-  </script>
 
+    // Accessible enlarged image viewer.
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    const lightboxCaption = document.getElementById("lightbox-caption");
+
+    document.addEventListener("click", function (event) {
+      const button = event.target.closest(".image-open");
+      if (!button) return;
+
+      const imagePath = button.dataset.image;
+      const imageElement = button.querySelector("img");
+      const altText = imageElement ? imageElement.alt : button.dataset.caption;
+
+      lightboxImage.src = imagePath;
+      lightboxImage.alt = altText;
+      lightboxCaption.textContent = button.dataset.caption;
+
+      if (typeof lightbox.showModal === "function") {
+        lightbox.showModal();
+      } else {
+        window.open(imagePath, "_blank", "noopener");
+      }
+    });
+
+    document.getElementById("lightbox-close").addEventListener("click", function () {
+      lightbox.close();
+    });
+
+    lightbox.addEventListener("click", function (event) {
+      if (event.target === lightbox) lightbox.close();
+    });
+
+    lightbox.addEventListener("close", function () {
+      lightboxImage.removeAttribute("src");
+    });
+  </script>
 </body>
 </html>
