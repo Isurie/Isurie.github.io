@@ -620,7 +620,7 @@
         <a href="index.html">Home</a>
         <a href="#overview">Research</a>
         <a href="#modules">Modules</a>
-        <a href="#gallery">Screenshots</a>
+        <a href="#gallery">Presentation Gallery</a>
       </div>
     </nav>
   </header>
@@ -648,7 +648,7 @@
         </div>
 
         <div class="hero-actions">
-          <a class="button button-primary" href="#gallery">Explore screenshots ↓</a>
+          <a class="button button-primary" href="#gallery">View Project Slides ↓</a>
           <a class="button button-outline" href="index.html">← Back to portfolio</a>
         </div>
       </div>
@@ -806,9 +806,9 @@
         <div class="gallery-top">
           <div class="section-heading">
             <p class="section-kicker">03 / PROJECT ARCHIVE</p>
-            <h2>The research, in screenshots.</h2>
+            <h2>The research, slide by slide.</h2>
             <p>
-              Browse the original presentation and implementation
+              Browse the original research presentation and implementation
               screenshots. Select any image to view it at a larger size.
             </p>
           </div>
@@ -816,7 +816,7 @@
 
         <div class="gallery-tools" aria-label="Filter screenshots">
           <button class="filter-button active" type="button"
-            data-filter="all" aria-pressed="true">All screenshots</button>
+            data-filter="all" aria-pressed="true">Explore the Gallery</button>
           <button class="filter-button" type="button"
             data-filter="overview" aria-pressed="false">Project overview</button>
           <button class="filter-button" type="button"
@@ -826,12 +826,6 @@
         <div class="gallery-grid" id="gallery-grid">
           <!-- Original screenshots are loaded from the supplied paths. -->
         </div>
-
-        <p class="gallery-note">
-          The original image files remain in assets/images/.
-          Screenshot captions identify the source filename and do not
-          assume details that have not been verified from the image.
-        </p>
 
         <div class="repository-cta">
           <div>
@@ -948,9 +942,13 @@
       categoryLabel.textContent =
         category === "overview" ? "Project material" : "Module walkthrough";
 
+      
       const title = document.createElement("h3");
       title.textContent =
-        String(index).padStart(2, "0") + " · " + filename;
+        String(index).padStart(2, "0") +
+        " · Slide " +
+        String(index).padStart(2, "0");
+
 
       caption.append(categoryLabel, title);
       card.append(button, caption);
